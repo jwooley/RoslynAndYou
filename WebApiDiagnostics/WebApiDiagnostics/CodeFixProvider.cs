@@ -13,6 +13,7 @@ using System.Collections.Immutable;
 using Microsoft.CodeAnalysis.CodeActions;
 using Microsoft.CodeAnalysis.Formatting;
 using System.Composition;
+using Microsoft.CodeAnalysis.Rename;
 
 namespace ControllerDiagnostics
 {
@@ -38,23 +39,23 @@ namespace ControllerDiagnostics
             context.RegisterFix(CodeAction.Create("Ensure type ends in 'Controller'", c => MakeEndInControllerAsync(context.Document, declaration, c)), diagnostic);
         }
 
-        private async Task<Document> MakeEndInControllerAsync(Document document, TypeDeclarationSyntax typeDecl, CancellationToken cancellationToken)
+        private async Task<Solution> MakeEndInControllerAsync(Document document, TypeDeclarationSyntax typeDecl, CancellationToken cancellationToken)
         {
-            var identifierToken = typeDecl.Identifier;
-            var originalName = identifierToken.Text;
+            var semanticModel = await document.GetSemanticModelAsync(cancellationToken);
 
+            var originalName = typeDecl.Identifier.Text;
             var nameWithoutController = Regex.Replace(originalName, "controller", String.Empty, RegexOptions.IgnoreCase);
             var newName = nameWithoutController + "Controller";
 
-            var newIdentifier = SyntaxFactory.Identifier(newName)
-                .WithAdditionalAnnotations(Formatter.Annotation);
+            var solution = document.Project.Solution;
+            if (solution == null) return null;
 
-            var newDeclaration = typeDecl.ReplaceToken(identifierToken, newIdentifier);
+            var symbol = semanticModel.GetDeclaredSymbol(typeDecl, cancellationToken);
+            if (symbol == null) return null;
 
-            var root = await document.GetSyntaxRootAsync();
-            var newRoot = root.ReplaceNode(typeDecl, newDeclaration);
-            var newDocument = document.WithSyntaxRoot(newRoot);
-            return newDocument;
+            var options = solution.Workspace.Options;
+            var newSolution = await Renamer.RenameSymbolAsync(solution, symbol, newName, options, cancellationToken).ConfigureAwait(false);
+            return newSolution;
         }
     }
 }

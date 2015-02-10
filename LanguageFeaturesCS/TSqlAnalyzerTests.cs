@@ -15,7 +15,7 @@ namespace LanguageFeaturesCS
             {
 
                 cmd.CommandText = "Select * from MyTable";
-                //cmd.CommandText = "This should not compile";
+                cmd.CommandText = "This should not compile";
 
                 var injectedValue = "' OR 1=1; --";
                 cmd.CommandText = "Select * from SomeTable Where Field='" + injectedValue + "'";

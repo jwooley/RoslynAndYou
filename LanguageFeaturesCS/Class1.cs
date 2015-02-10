@@ -27,12 +27,14 @@ namespace LanguageFeaturesCS
         [TestMethod]
         public void CanImportStatic()
         {
-            WriteLine("Test");      // Imports static
+
+            Console.WriteLine("Test");  // Without import
+            WriteLine("Test");          // Imports static
+
             var radius = 3;
             Assert.AreEqual(
                 2 * Math.PI * radius, 
                 2 * PI * radius);   // Imports static
-
         }
 
         [TestMethod]
@@ -52,7 +54,11 @@ namespace LanguageFeaturesCS
         public void NullPropagatingOperator()
         {
             var parent = new Person();
+
+            Trace.WriteLine((parent == null) ? 0  : parent.Age);
+            
             Trace.WriteLine(parent?.Age);
+            var nullPropigatedAge = parent?.Age;
             Trace.WriteLine(parent?.Children.FirstOrDefault()?.Age);
         }
 
@@ -63,19 +69,30 @@ namespace LanguageFeaturesCS
             {
                 Age = 42
             };
+            Trace.WriteLine(string.Format("{0} is {1} years old", parent.Name, parent.Age));
+
             Trace.WriteLine($"{parent.Name} is {parent.Age} years old");    // String interpolation.
         }
 
         public void CanGetNameof(string fieldName)
         {
             var parent = new Person();
+
             Assert.AreEqual("Age", nameof(parent.Age));
+
+            OnNotifyPropertyChanged(nameof(fieldName));           // Without nameof
+            OnNotifyPropertyChanged(nameof(fieldName));     // With nameof
+
             throw new ArgumentException("Field not set", nameof(fieldName));
         }
 
         [TestMethod]
         public void CanInitializeIndexes()
         {
+            var numsBefore = new Dictionary<int, string>();
+            numsBefore.Add(7, "seven");
+            numsBefore.Add(9, "nine");
+
             var numbers = new Dictionary<int, string>
             {
                 [7] = "seven",
@@ -90,6 +107,12 @@ namespace LanguageFeaturesCS
             Trace.WriteLine(value);
             return Task.Delay(5);
         }
+
+        public void OnNotifyPropertyChanged(string propertyName)
+        {
+            Trace.WriteLine(propertyName);
+        }
+
         public class Person
         {
             public string Name { get; set; }
