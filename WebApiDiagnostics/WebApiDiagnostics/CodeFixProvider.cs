@@ -7,13 +7,7 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
 using System.Text.RegularExpressions;
-using Microsoft.CodeAnalysis.CodeFixes;
 using System;
-using System.Collections.Immutable;
-using Microsoft.CodeAnalysis.CodeActions;
-using Microsoft.CodeAnalysis.Formatting;
-using System.Composition;
-using Microsoft.CodeAnalysis.Rename;
 
 namespace ControllerDiagnostics
 {

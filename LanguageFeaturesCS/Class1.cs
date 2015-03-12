@@ -17,7 +17,7 @@ namespace LanguageFeaturesCS
     {
         public int X { get; set; } = 1;  // Auto property Initializer
         public int Y { get;  } = 2;      // Getter-Only Auto Props
-        public int Z { get; } 
+        public int Z { get; }
 
         public Class1()
         {
@@ -56,7 +56,7 @@ namespace LanguageFeaturesCS
             var parent = new Person();
 
             Trace.WriteLine((parent == null) ? 0  : parent.Age);
-            
+
             Trace.WriteLine(parent?.Age);
             var nullPropigatedAge = parent?.Age;
             Trace.WriteLine(parent?.Children.FirstOrDefault()?.Age);
@@ -119,7 +119,6 @@ namespace LanguageFeaturesCS
             public int Age { get; set; }
             public List<Person> Children { get; } = new List<Person>(); // Getter only auto prop initializer
         }
-        
         #endregion
     }
 }

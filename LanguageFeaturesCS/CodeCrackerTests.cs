@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace LanguageFeaturesCS
 {
     [TestClass]
-    class CodeCrackerTests
+    public class CodeCrackerTests
     {
         public void SampleCodeCrackerTest()
         {

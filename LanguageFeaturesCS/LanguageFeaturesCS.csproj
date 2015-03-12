@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.Net.RoslynDiagnostics.1.0.0-rc1-20150122-03\build\Microsoft.Net.RoslynDiagnostics.props" Condition="Exists('..\packages\Microsoft.Net.RoslynDiagnostics.1.0.0-rc1-20150122-03\build\Microsoft.Net.RoslynDiagnostics.props')" />
-  <Import Project="..\packages\Microsoft.Net.ToolsetCompilers.1.0.0-rc1-20150122-03\build\Microsoft.Net.ToolsetCompilers.props" Condition="Exists('..\packages\Microsoft.Net.ToolsetCompilers.1.0.0-rc1-20150122-03\build\Microsoft.Net.ToolsetCompilers.props')" />
+  <Import Project="..\packages\Microsoft.Net.RoslynDiagnostics.1.0.0-rc1-20150210-02\build\Microsoft.Net.RoslynDiagnostics.props" Condition="Exists('..\packages\Microsoft.Net.RoslynDiagnostics.1.0.0-rc1-20150210-02\build\Microsoft.Net.RoslynDiagnostics.props')" />
+  <Import Project="..\packages\Microsoft.Net.ToolsetCompilers.1.0.0-rc1-20150210-02\build\Microsoft.Net.ToolsetCompilers.props" Condition="Exists('..\packages\Microsoft.Net.ToolsetCompilers.1.0.0-rc1-20150210-02\build\Microsoft.Net.ToolsetCompilers.props')" />
   <Import Project="..\packages\Microsoft.CodeAnalysis.CSharp.FxCopAnalyzers.1.0.0.0-beta2\build\Microsoft.CodeAnalysis.CSharp.FxCopAnalyzers.props" Condition="Exists('..\packages\Microsoft.CodeAnalysis.CSharp.FxCopAnalyzers.1.0.0.0-beta2\build\Microsoft.CodeAnalysis.CSharp.FxCopAnalyzers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -12,9 +12,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LanguageFeaturesCS</RootNamespace>
     <AssemblyName>LanguageFeaturesCS</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>43fd7aaa</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>5c348775</NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -62,7 +63,7 @@
     </Reference>
     <Reference Include="Microsoft.SqlServer.TransactSql.ScriptDom, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <Private>True</Private>
-      <HintPath>..\packages\Microsoft.SqlServer.TransactSql.ScriptDom.12.0\lib\Microsoft.SqlServer.TransactSql.ScriptDom.dll</HintPath>
+      <HintPath>..\packages\Microsoft.SqlServer.TransactSql.ScriptDom.12.0.1\lib\net40\Microsoft.SqlServer.TransactSql.ScriptDom.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -110,11 +111,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="..\packages\codecracker.CSharp.1.0.0-alpha3\tools\analyzers\CodeCracker.CSharp.dll" />
+    <Analyzer Include="..\packages\codecracker.CSharp.1.0.0-alpha4\tools\analyzers\CodeCracker.CSharp.dll" />
     <Analyzer Include="..\packages\DotNetDoodle.Analyzers.0.0.2\tools\analyzers\DotNetDoodle.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.CSharp.FxCopAnalyzers.1.0.0.0-beta2\tools\analyzers\Microsoft.CodeAnalysis.CSharp.FxCopAnalyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.CSharp.FxCopAnalyzers.1.0.0.0-beta2\tools\analyzers\Microsoft.CodeAnalysis.FxCopAnalyzers.dll" />
-    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0-alpha001\tools\analyzers\StyleCop.Analyzers.dll" />
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0-alpha004\tools\analyzers\StyleCop.Analyzers.dll" />
     <Analyzer Include="..\packages\TSqlAnalyzer.0.0.1-alpha2\tools\analyzers\TSqlAnalyzer.dll" />
   </ItemGroup>
   <ItemGroup>
@@ -126,8 +127,8 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.CSharp.FxCopAnalyzers.1.0.0.0-beta2\build\Microsoft.CodeAnalysis.CSharp.FxCopAnalyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.CSharp.FxCopAnalyzers.1.0.0.0-beta2\build\Microsoft.CodeAnalysis.CSharp.FxCopAnalyzers.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.Net.ToolsetCompilers.1.0.0-rc1-20150122-03\build\Microsoft.Net.ToolsetCompilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.ToolsetCompilers.1.0.0-rc1-20150122-03\build\Microsoft.Net.ToolsetCompilers.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.Net.RoslynDiagnostics.1.0.0-rc1-20150122-03\build\Microsoft.Net.RoslynDiagnostics.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.RoslynDiagnostics.1.0.0-rc1-20150122-03\build\Microsoft.Net.RoslynDiagnostics.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.ToolsetCompilers.1.0.0-rc1-20150210-02\build\Microsoft.Net.ToolsetCompilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.ToolsetCompilers.1.0.0-rc1-20150210-02\build\Microsoft.Net.ToolsetCompilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.RoslynDiagnostics.1.0.0-rc1-20150210-02\build\Microsoft.Net.RoslynDiagnostics.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.RoslynDiagnostics.1.0.0-rc1-20150210-02\build\Microsoft.Net.RoslynDiagnostics.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

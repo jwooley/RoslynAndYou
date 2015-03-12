@@ -1,5 +1,6 @@
 ﻿Module Module1
 
+
     Sub Main()
 
         Dim MultiLineString = "Hello
@@ -9,6 +10,10 @@ World"                                  ' Multi Line String
                    Where num Mod 2 = 0      ' Comments used to break the next line
                    Select num
 
+        Dim FirstName = "Jim"
+        Dim LastName = "Wooley"
+
+        Dim fullname = $"{FirstName} {LastName}"    'Interpolated string
     End Sub
 
 End Module
