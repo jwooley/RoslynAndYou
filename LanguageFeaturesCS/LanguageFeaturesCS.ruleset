@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <RuleSet Name="Rules for LanguageFeaturesCS" Description="Code analysis rules for LanguageFeaturesCS.csproj." ToolsVersion="14.0">
+  <Rules AnalyzerId="CodeCracker.CSharp" RuleNamespace="CodeCracker.CSharp">
+    <Rule Id="CC0004" Action="None" />
+  </Rules>
   <Rules AnalyzerId="DotNetDoodle.Analyzers" RuleNamespace="DotNetDoodle.Analyzers">
     <Rule Id="TU0001" Action="None" />
   </Rules>
@@ -68,6 +71,7 @@
     <Rule Id="CA2242" Action="Warning" />
   </Rules>
   <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
+    <Rule Id="SA1101" Action="None" />
     <Rule Id="SA1600" Action="None" />
   </Rules>
 </RuleSet>

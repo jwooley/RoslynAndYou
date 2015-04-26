@@ -1,4 +1,6 @@
-﻿Module Module1
+﻿Imports System.Console
+
+Module Module1
 
 
     Sub Main()
@@ -13,13 +15,9 @@ World"                                  ' Multi Line String
         Dim FirstName = "Jim"
         Dim LastName = "Wooley"
 
-        Dim fullname = $"{FirstName} {LastName}"    'Interpolated string
+        WriteLine($"{FirstName} {LastName}")    'Interpolated string
     End Sub
 
 End Module
 
-Structure S
-    Sub New()       ' Structure Constructor
-
-    End Sub
-End Structure
+' For full list of new features see https://github.com/dotnet/roslyn/wiki/Languages-features-in-C%23-6-and-VB-14

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LanguageFeaturesCS
 {
-    class TSqlAnalyzerTests
+    public class TSqlAnalyzerTests
     {
         public void TestSqlCommand()
         {

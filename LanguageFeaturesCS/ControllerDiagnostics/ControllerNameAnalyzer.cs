@@ -1,15 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.Linq;
-using System.Threading;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
+using System.Collections.Immutable;
 
 namespace ControllerDiagnostics
 {
-    // TODO: Consider implementing other interfaces that implement IDiagnosticAnalyzer instead of or in addition to ISymbolAnalyzer
-
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class WebApiControllerNamingConventionAnalyzer : DiagnosticAnalyzer
     {
@@ -33,7 +27,6 @@ namespace ControllerDiagnostics
         public override void Initialize(AnalysisContext context)
         {
             context.RegisterSymbolAction(Analyzer, SymbolKind.NamedType);
-            throw new NotImplementedException();
         }
 
         private void Analyzer(SymbolAnalysisContext context)

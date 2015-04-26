@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LanguageFeaturesCS
 {
-    class UnorderedClass
+    public class UnorderedClass
     {
         public void SampleMethod() { }
         public string SomeProperty { get; set; }

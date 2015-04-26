@@ -10,12 +10,13 @@ namespace LanguageFeaturesCS
     [TestClass]
     public class CodeCrackerTests
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "CC0001:You should use 'var' whenever possible.", Justification = "<Pending>")]
         public void SampleCodeCrackerTest()
         {
             try
             {
                 int shouldSuggestChange = 0;
-                if ((shouldSuggestChange == 0))
+                if (shouldSuggestChange == 0)
                     Console.WriteLine("Too Manay Parens");
             }
             catch (Exception ex)

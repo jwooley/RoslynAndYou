@@ -57,6 +57,8 @@ namespace LanguageFeaturesCS
 
             Trace.WriteLine((parent == null) ? 0  : parent.Age);
 
+            var age = parent?.Age;
+
             Trace.WriteLine(parent?.Age);
             var nullPropigatedAge = parent?.Age;
             Trace.WriteLine(parent?.Children.FirstOrDefault()?.Age);
@@ -65,13 +67,13 @@ namespace LanguageFeaturesCS
         [TestMethod]
         public void StringInterpolation()
         {
-            var parent = new Person
+            var child = new Person
             {
                 Age = 42
             };
-            Trace.WriteLine(string.Format("{0} is {1} years old", parent.Name, parent.Age));
+            Trace.WriteLine(string.Format("{0} is {1} years old", child.Name, child.Age));
 
-            Trace.WriteLine($"{parent.Name} is {parent.Age} years old");    // String interpolation.
+            Trace.WriteLine($"{child.Name} is {child.Age} years old");    // String interpolation.
         }
 
         public void CanGetNameof(string fieldName)
@@ -80,7 +82,7 @@ namespace LanguageFeaturesCS
 
             Assert.AreEqual("Age", nameof(parent.Age));
 
-            OnNotifyPropertyChanged(nameof(fieldName));           // Without nameof
+            OnNotifyPropertyChanged("fieldName");           // Without nameof
             OnNotifyPropertyChanged(nameof(fieldName));     // With nameof
 
             throw new ArgumentException("Field not set", nameof(fieldName));
@@ -99,6 +101,8 @@ namespace LanguageFeaturesCS
                 [9] = "nine",
                 [13] = "thirteen"
             };
+
+            var x = 1;
         }
 
         #region Helper Methods
