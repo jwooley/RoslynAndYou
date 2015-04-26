@@ -74,4 +74,7 @@
     <Rule Id="SA1101" Action="None" />
     <Rule Id="SA1600" Action="None" />
   </Rules>
+  <Rules AnalyzerId="TSqlAnalyzer" RuleNamespace="TSqlAnalyzer">
+    <Rule Id="TSqlAnalyzer" Action="Warning" />
+  </Rules>
 </RuleSet>

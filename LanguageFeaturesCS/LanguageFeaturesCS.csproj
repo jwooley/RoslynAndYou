@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.1.0.0-rc1\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props" Condition="Exists('..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.1.0.0-rc1\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props')" />
   <Import Project="..\packages\Microsoft.Net.RoslynDiagnostics.1.0.0-rc2-20150415-05\build\Microsoft.Net.RoslynDiagnostics.props" Condition="Exists('..\packages\Microsoft.Net.RoslynDiagnostics.1.0.0-rc2-20150415-05\build\Microsoft.Net.RoslynDiagnostics.props')" />
   <Import Project="..\packages\Microsoft.Net.ToolsetCompilers.1.0.0-rc2-20150415-05\build\Microsoft.Net.ToolsetCompilers.props" Condition="Exists('..\packages\Microsoft.Net.ToolsetCompilers.1.0.0-rc2-20150415-05\build\Microsoft.Net.ToolsetCompilers.props')" />
   <Import Project="..\packages\Microsoft.CodeAnalysis.CSharp.FxCopAnalyzers.1.0.0.0-beta2\build\Microsoft.CodeAnalysis.CSharp.FxCopAnalyzers.props" Condition="Exists('..\packages\Microsoft.CodeAnalysis.CSharp.FxCopAnalyzers.1.0.0.0-beta2\build\Microsoft.CodeAnalysis.CSharp.FxCopAnalyzers.props')" />
@@ -14,7 +15,7 @@
     <AssemblyName>LanguageFeaturesCS</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>aebeaa71</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>a208ed0e</NuGetPackageImportStamp>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -97,8 +98,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="..\packages\codecracker.CSharp.1.0.0-alpha4\tools\analyzers\CodeCracker.CSharp.dll" />
+    <Analyzer Include="..\packages\codecracker.CSharp.1.0.0-alpha5\tools\analyzers\CodeCracker.CSharp.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.1.0.0-rc1\tools\analyzers\C#\Microsoft.CodeAnalysis.CSharp.FxCopAnalyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.1.0.0-rc1\tools\analyzers\Microsoft.CodeAnalysis.FxCopAnalyzers.dll" />
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.0-alpha004\tools\analyzers\StyleCop.Analyzers.dll" />
+    <Analyzer Include="..\packages\TSqlAnalyzer.0.0.1-alpha3\tools\analyzers\TSqlAnalyzer.dll" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
@@ -114,6 +118,7 @@
     <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.CSharp.FxCopAnalyzers.1.0.0.0-beta2\build\Microsoft.CodeAnalysis.CSharp.FxCopAnalyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.CSharp.FxCopAnalyzers.1.0.0.0-beta2\build\Microsoft.CodeAnalysis.CSharp.FxCopAnalyzers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Net.ToolsetCompilers.1.0.0-rc2-20150415-05\build\Microsoft.Net.ToolsetCompilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.ToolsetCompilers.1.0.0-rc2-20150415-05\build\Microsoft.Net.ToolsetCompilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Net.RoslynDiagnostics.1.0.0-rc2-20150415-05\build\Microsoft.Net.RoslynDiagnostics.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.RoslynDiagnostics.1.0.0-rc2-20150415-05\build\Microsoft.Net.RoslynDiagnostics.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.1.0.0-rc1\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.1.0.0-rc1\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
