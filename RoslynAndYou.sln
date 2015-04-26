@@ -12,11 +12,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B72346
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ConsoleApplicationVB", "ConsoleApplicationVB\ConsoleApplicationVB.vbproj", "{14BC9D00-2C3F-45CA-9313-3DB896633523}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControllerDiagnostics", "..\ControllerDiagnostics\ControllerDiagnostics\ControllerDiagnostics.csproj", "{65A6B2D3-CD03-4BBE-8027-3A2EF9725F8F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControllerDiagnostics", "ControllerDiagnostics\ControllerDiagnostics\ControllerDiagnostics.csproj", "{65A6B2D3-CD03-4BBE-8027-3A2EF9725F8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControllerDiagnostics.Test", "..\ControllerDiagnostics\ControllerDiagnostics.Test\ControllerDiagnostics.Test.csproj", "{7D3657EB-2CEE-48A3-9C1A-6E997F7BCC82}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControllerDiagnostics.Test", "ControllerDiagnostics\ControllerDiagnostics.Test\ControllerDiagnostics.Test.csproj", "{7D3657EB-2CEE-48A3-9C1A-6E997F7BCC82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControllerDiagnostics.Vsix", "..\ControllerDiagnostics\ControllerDiagnostics.Vsix\ControllerDiagnostics.Vsix.csproj", "{627ED623-903C-4083-8EDC-EA1AF7B31F0F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControllerDiagnostics.Vsix", "ControllerDiagnostics\ControllerDiagnostics.Vsix\ControllerDiagnostics.Vsix.csproj", "{627ED623-903C-4083-8EDC-EA1AF7B31F0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
