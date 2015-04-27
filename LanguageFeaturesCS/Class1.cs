@@ -44,9 +44,9 @@ namespace LanguageFeaturesCS
             {
                 throw new Exception("Oops");
             }
-            catch (Exception ex)
+            catch (Exception ex) when (ex.InnerException != null)   // Exception filters
             {
-                await LogAsync(ex);
+                await LogAsync(ex);                                 // Await in catch block
             }
         }
 
@@ -73,7 +73,7 @@ namespace LanguageFeaturesCS
             };
             Trace.WriteLine(string.Format("{0} is {1} years old", child.Name, child.Age));
 
-            Trace.WriteLine($"{child.Name} is {child.Age} years old");    // String interpolation.
+            Trace.WriteLine($"{child.Name} is {child.Age} years old on {child.BirthDate:mm/dd/yyyy}");    // String interpolation.
         }
 
         public void CanGetNameof(string fieldName)
@@ -85,7 +85,7 @@ namespace LanguageFeaturesCS
             OnNotifyPropertyChanged("fieldName");           // Without nameof
             OnNotifyPropertyChanged(nameof(fieldName));     // With nameof
 
-            throw new ArgumentException("Field not set", nameof(fieldName));
+            throw new ArgumentException("Field not set", "fieldName");
         }
 
         [TestMethod]
@@ -120,6 +120,7 @@ namespace LanguageFeaturesCS
         public class Person
         {
             public string Name { get; set; }
+            public DateTime BirthDate { get; set; }
             public int Age { get; set; }
             public List<Person> Children { get; } = new List<Person>(); // Getter only auto prop initializer
         }
