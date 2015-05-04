@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace ControllerDiagnostics
 {
-    [ExportCodeFixProvider("ControllerNameCodeFixProvider", LanguageNames.CSharp), Shared]
+    [ExportCodeFixProvider(nameof(ControllerNamingConventionCodeFixProvider), LanguageNames.CSharp), Shared]
     public class ControllerNamingConventionCodeFixProvider : CodeFixProvider
     {
         public sealed override ImmutableArray<string> FixableDiagnosticIds
