@@ -12,19 +12,16 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.Formatting;
 
 namespace ControllerDiagnostics
 {
     [ExportCodeFixProvider(nameof(ControllerNamingConventionCodeFixProvider), LanguageNames.CSharp), Shared]
     public class ControllerNamingConventionCodeFixProvider : CodeFixProvider
     {
-        public sealed override ImmutableArray<string> FixableDiagnosticIds
-        {
-            get
-            {
-                return ImmutableArray.Create(ControllerNamingConventionAnalyzer.DiagnosticId);
-            }
-        }
+        public sealed override ImmutableArray<string> FixableDiagnosticIds { get; } = ImmutableArray.Create(ControllerNamingConventionAnalyzer.DiagnosticId);
+
         public sealed override FixAllProvider GetFixAllProvider()
         {
             return WellKnownFixAllProviders.BatchFixer;
@@ -49,6 +46,11 @@ namespace ControllerDiagnostics
 
             var semanticModel = await document.GetSemanticModelAsync(cancellationToken);
             var typeSymbol = semanticModel.GetDeclaredSymbol(typeDecl, cancellationToken);
+            //var newSymbol = SyntaxFactory.ClassDeclaration(newName)
+            //    .WithMembers(typeDecl.Members)
+            //    .WithLeadingTrivia(typeDecl.GetLeadingTrivia())
+            //    .WithTrailingTrivia(typeDecl.GetTrailingTrivia())
+            //    .WithAdditionalAnnotations(Formatter.Annotation);
 
             var originalSolution = document.Project.Solution;
             var optionSet = originalSolution.Workspace.Options;
