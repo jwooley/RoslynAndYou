@@ -1,11 +1,6 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
-using System;
-using System.Collections.Generic;
 using System.Collections.Immutable;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ControllerDiagnostics
 {
@@ -23,6 +18,8 @@ namespace ControllerDiagnostics
 
         public override void Initialize(AnalysisContext context)
         {
+            // context.RegisterCompilationAction(Analyzer);
+            // context.RegisterSyntaxNodeAction(Analyzer, SyntaxKind.ClassDeclaration);
             context.RegisterSymbolAction(Analyzer, SymbolKind.NamedType);
         }
 

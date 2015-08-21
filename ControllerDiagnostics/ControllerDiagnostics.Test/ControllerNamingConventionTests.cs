@@ -66,7 +66,7 @@ namespace WebApplicationCS.Controllers
             VerifyCSharpFix(test, fixtest);
         }
 
-        //Diagnostic and CodeFix both triggered and checked for
+        // Diagnostic and CodeFix both triggered and checked for
         [TestMethod]
         public void MvcClassEndingInControllerDoesNotCreateDiagnostic()
         {
@@ -75,7 +75,7 @@ using System.Web.Mvc;
 
 namespace WebApplicationCS.Controllers
 {
-    public class HomeControllerTest : Controller
+    public class HomeTestController : Controller
     {
 		public HomeConTest()
 		{
