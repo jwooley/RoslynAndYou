@@ -88,6 +88,12 @@ namespace LanguageFeaturesCS
             throw new ArgumentException("Field not set", "fieldName");
         }
 
+        public string FullName()
+        {
+            return $"{FirstName} {LastName}";
+        }
+        public string FullName1() => $"{FirstName} {LastName}";     // Expression Bodied Members
+
         [TestMethod]
         public void CanInitializeIndexes()
         {
@@ -102,7 +108,7 @@ namespace LanguageFeaturesCS
                 [13] = "thirteen"
             };
 
-            var x = 1;
+            var x = 1 + 2;
         }
 
         #region Helper Methods
@@ -117,6 +123,8 @@ namespace LanguageFeaturesCS
             Trace.WriteLine(propertyName);
         }
 
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public class Person
         {
             public string Name { get; set; }

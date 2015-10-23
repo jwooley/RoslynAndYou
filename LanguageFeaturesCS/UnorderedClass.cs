@@ -4,9 +4,9 @@ namespace LanguageFeaturesCS
 {
     public class UnorderedClass
     {
-        public void SampleMethod() { }
+        public void SampleMethod() { AnotherMethod(); }
         public string SomeProperty { get; set; }
-        private string aRandomField = "sgiosg";
+        private readonly string aRandomField = "sgiosg";
         private void AnotherMethod() { }
         public string FirstName { get; set; } = "Jim";
         public string LastName { get; set; } = "Wooley";
