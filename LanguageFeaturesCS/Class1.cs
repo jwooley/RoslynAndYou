@@ -38,13 +38,13 @@ namespace LanguageFeaturesCS
         }
 
         [TestMethod]
-        public async void CanAwaitInCatchAndFinally()
+        public async Task CanAwaitInCatchAndFinally()
         {
             try
             {
                 throw new Exception("Oops");
             }
-            catch (Exception ex) when (ex.InnerException != null)   // Exception filters
+            catch (Exception ex) when (ex.InnerException == null)   // Exception filters
             {
                 await LogAsync(ex);                                 // Await in catch block
             }
@@ -115,7 +115,7 @@ namespace LanguageFeaturesCS
         public Task LogAsync(object value)
         {
             Trace.WriteLine(value);
-            return Task.Delay(5);
+            return Task.FromResult(0);
         }
 
         public void OnNotifyPropertyChanged(string propertyName)
