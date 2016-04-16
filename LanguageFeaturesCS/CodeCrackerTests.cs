@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Demo;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,7 +51,7 @@ namespace LanguageFeaturesCS
 
         public void ShouldUseObjectInitializer()
         {
-            var person = new Class1.Person();
+            var person = new Person();
             person.BirthDate = DateTime.Today.AddYears(-24);
             person.Name = "Daniel D";
 

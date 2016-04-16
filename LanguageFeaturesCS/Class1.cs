@@ -9,7 +9,7 @@ using System.Diagnostics.Tracing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Diagnostics;
 
-namespace LanguageFeaturesCS
+namespace Demo
 {
 
     [TestClass]
@@ -76,21 +76,24 @@ namespace LanguageFeaturesCS
             Trace.WriteLine($"{child.Name} is {child.Age} years old on {child.BirthDate:mm/dd/yyyy}");    // String interpolation.
         }
 
-        public void CanGetNameof(string fieldName)
+        public void CanGetNameof(string name)
         {
             var parent = new Person();
 
+            OnNotifyPropertyChanged("name");           // Without nameof
+            OnNotifyPropertyChanged(nameof(name));     // With nameof
+
             Assert.AreEqual("Age", nameof(parent.Age));
 
-            OnNotifyPropertyChanged("fieldName");           // Without nameof
-            OnNotifyPropertyChanged(nameof(fieldName));     // With nameof
 
-            throw new ArgumentException("Field not set", "fieldName");
+            throw new ArgumentException("Field not set", nameof(name));
         }
 
         public string FullName()
         {
             return $"{FirstName} {LastName}";
+            var x = 1 + 2;
+
         }
         public string FullName1() => $"{FirstName} {LastName}";     // Expression Bodied Members
 
@@ -108,7 +111,6 @@ namespace LanguageFeaturesCS
                 [13] = "thirteen"
             };
 
-            var x = 1 + 2;
         }
 
         #region Helper Methods
@@ -125,13 +127,15 @@ namespace LanguageFeaturesCS
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public class Person
-        {
-            public string Name { get; set; }
-            public DateTime BirthDate { get; set; }
-            public int Age { get; set; }
-            public List<Person> Children { get; } = new List<Person>(); // Getter only auto prop initializer
-        }
+
         #endregion
+    }
+
+    public class Person
+    {
+        public string Name { get; set; }
+        public DateTime BirthDate { get; set; }
+        public int Age { get; set; }
+        public List<Person> Children { get; } = new List<Person>(); // Getter only auto prop initializer
     }
 }
