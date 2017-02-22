@@ -3,10 +3,15 @@
   <Import Project="..\..\packages\Microsoft.Net.RoslynDiagnostics.1.1.1-beta1-20150818-01\build\Microsoft.Net.RoslynDiagnostics.props" Condition="Exists('..\..\packages\Microsoft.Net.RoslynDiagnostics.1.1.1-beta1-20150818-01\build\Microsoft.Net.RoslynDiagnostics.props')" />
   <Import Project="..\..\packages\Microsoft.Net.ToolsetCompilers.1.0.0-rc3-20150520-02\build\Microsoft.Net.ToolsetCompilers.props" Condition="Exists('..\..\packages\Microsoft.Net.ToolsetCompilers.1.0.0-rc3-20150520-02\build\Microsoft.Net.ToolsetCompilers.props')" />
   <PropertyGroup>
-    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>14.0</OldToolsVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
