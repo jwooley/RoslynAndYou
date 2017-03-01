@@ -28,12 +28,12 @@ namespace Demo
         public void CanImportStatic()
         {
 
-            Console.WriteLine("Test");  // Without import
+            WriteLine("Test");  // Without import
             WriteLine("Test");          // Imports static
 
             var radius = 3;
             Assert.AreEqual(
-                2 * Math.PI * radius, 
+                2 * PI * radius, 
                 2 * PI * radius);   // Imports static
         }
 
@@ -57,7 +57,7 @@ namespace Demo
 
             Trace.WriteLine((parent == null) ? 0  : parent.Age);
 
-            var age = parent?.Age;
+           var age = parent?.Age;
 
             Trace.WriteLine(parent?.Age);
             var nullPropigatedAge = parent?.Age;
@@ -71,31 +71,34 @@ namespace Demo
             {
                 Age = 42
             };
-            Trace.WriteLine(string.Format("{0} is {1} years old", child.Name, child.Age));
+            Trace.WriteLine($"{child.Name} is {child.Age} years old");
 
             Trace.WriteLine($"{child.Name} is {child.Age} years old on {child.BirthDate:mm/dd/yyyy}");    // String interpolation.
         }
 
-        public void CanGetNameof(string name)
+        public void CanGetNameof(string myname)
         {
             var parent = new Person();
 
             OnNotifyPropertyChanged("name");           // Without nameof
-            OnNotifyPropertyChanged(nameof(name));     // With nameof
+            OnNotifyPropertyChanged(nameof(myname));     // With nameof
 
             Assert.AreEqual("Age", nameof(parent.Age));
 
 
-            throw new ArgumentException("Field not set", nameof(name));
+            throw new ArgumentException("Field not set", nameof(myname));
         }
 
         public string FullName()
         {
             return $"{FirstName} {LastName}";
-            var x = 1 + 2;
-
         }
         public string FullName1() => $"{FirstName} {LastName}";     // Expression Bodied Members
+
+        public void TestCode()
+        {
+            var x = 1 + 2;
+        }
 
         [TestMethod]
         public void CanInitializeIndexes()
