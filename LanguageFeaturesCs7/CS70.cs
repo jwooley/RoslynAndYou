@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace LanguageFeaturesCs7
 {
@@ -12,7 +13,7 @@ namespace LanguageFeaturesCs7
         [TestMethod]
         public void CS7Test()
         {
-            object[] numbers = {0b1, 0b10, new object[] { 0b10, 0b100, 0b1000 }, 0b1000_0, 0b1000_00, "123", null }; // Binary literals with digit separators
+            object[] numbers = {0b1, 0b10, new object[] { 0b10, 0b100, 0b1000 }, 0b1_0000, 0b1000_00, "123", null }; // Binary literals with digit separators
             (int sum, int count) Tally(IEnumerable<object> list)        // Local Functions with tuple value types
             {
                 var r = (sum: 0, count: 0);
@@ -25,9 +26,9 @@ namespace LanguageFeaturesCs7
                             r.count++;
                             break;
                         case IEnumerable<object> l when l.Any():
-                            (int s, int c) t1 = Tally(l);               // Tuple Deconstruction
-                            r.sum += t1.s;
-                            r.count += t1.c;
+                            (int s, int c) = Tally(l);               // Tuple Deconstruction
+                            r.sum += s;
+                            r.count += c;
                             break;
                         case string iStr:
                             if (int.TryParse(iStr, out int parsed))     // out var
@@ -51,11 +52,55 @@ namespace LanguageFeaturesCs7
         public void CS7RefLocal()
         {
             var value = "1";
+            int y;
+            if (int.TryParse(value, out y))
+            {
+                Assert.AreEqual(1, y);                                  // Old way
+            }
+
             if (int.TryParse(value, out int x))                         // Ref local
             {
                 Assert.AreEqual(1, x);
             }
+
             Assert.AreEqual(1, x);                                      // Ref local scope
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof (NullReferenceException))]
+        public void CS7ThrowExpressions()
+        {
+            string s = null;
+            if (s == null)
+                throw new NullReferenceException("s is null");
+
+            var t = s ?? throw new NullReferenceException("s is null");
+        }
+
+        [TestMethod]
+        public async Task GeneralizedAsyncReturnTypes()
+        {
+            Assert.AreEqual(0, loadCount);
+            Assert.AreEqual("Jim", await GetUserName());
+            Assert.AreEqual(1, loadCount);
+            Assert.AreEqual("Jim", await GetUserName());
+            Assert.AreEqual(1, loadCount);
+        }
+
+        public ValueTask<string> GetUserName()
+        {
+            return loadCount == 0 ? new ValueTask<string>(Load()) : new ValueTask<string>(cachedName);
+        }
+
+        int loadCount = 0;
+        string cachedName = null;
+        private async Task<string> Load()
+        {
+            // Simulated delay
+            await Task.Delay(100);
+            cachedName = "Jim";
+            loadCount += 1;
+            return cachedName;
         }
     }
 }

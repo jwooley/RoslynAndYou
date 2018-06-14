@@ -14,8 +14,8 @@ namespace CodeCrackerSamples
             {
                 if (string.IsNullOrEmpty(input))
                     throw new ArgumentException("input");
+                    var person = GetJim();
 
-                var person = GetJim();
                 Console.Write($"{person.Name} is {person.Age} years old");
                 Console.WriteLine("His parent is [0]", person.Parent.Name);
             }

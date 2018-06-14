@@ -10,6 +10,51 @@ namespace ControllerDiagnostics.Test
     [TestClass]
     public class UnitTest : CodeFixVerifier
     {
+        [TestMethod]
+        public void MvcClassWithoutConstructorFixes()
+        {
+            var test = @"
+using System.Web.Mvc;
+
+namespace WebApplicationCS.Controllers
+{
+    public class HomeControllerTest : Controller
+    {
+        public ActionResult Index()
+        {
+            return View();
+        }
+    }
+}";
+            var expected = new DiagnosticResult
+            {
+                Id = ControllerNamingConventionAnalyzer.DiagnosticId,
+                Message = String.Format("Type name '{0}' does not end in Controller", "HomeControllerTest"),
+                Severity = DiagnosticSeverity.Warning,
+                Locations =
+                    new[] {
+                            new DiagnosticResultLocation("Test0.cs", 6, 18)
+                        }
+            };
+
+            VerifyCSharpDiagnostic(test, expected);
+
+            var fixtest = @"
+using System.Web.Mvc;
+
+namespace WebApplicationCS.Controllers
+{
+    public class HomeTestController : Controller
+    {
+        public ActionResult Index()
+        {
+            return View();
+        }
+    }
+}";
+            VerifyCSharpFix(test, fixtest);
+        }
+
 
         //Diagnostic and CodeFix both triggered and checked for
         [TestMethod]

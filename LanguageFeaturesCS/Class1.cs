@@ -28,12 +28,12 @@ namespace Demo
         public void CanImportStatic()
         {
 
-            WriteLine("Test");  // Without import
+            Console.WriteLine("Test");  // Without import
             WriteLine("Test");          // Imports static
 
             var radius = 3;
             Assert.AreEqual(
-                2 * PI * radius, 
+                2 * Math.PI * radius, 
                 2 * PI * radius);   // Imports static
         }
 
@@ -76,17 +76,17 @@ namespace Demo
             Trace.WriteLine($"{child.Name} is {child.Age} years old on {child.BirthDate:mm/dd/yyyy}");    // String interpolation.
         }
 
-        public void CanGetNameof(string myname)
+        public void CanGetNameof(string name)
         {
             var parent = new Person();
 
             OnNotifyPropertyChanged("name");           // Without nameof
-            OnNotifyPropertyChanged(nameof(myname));     // With nameof
+            OnNotifyPropertyChanged(nameof(name));     // With nameof
 
             Assert.AreEqual("Age", nameof(parent.Age));
 
 
-            throw new ArgumentException("Field not set", nameof(myname));
+            throw new ArgumentException("Field not set", nameof(name));
         }
 
         public string FullName()
