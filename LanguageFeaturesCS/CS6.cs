@@ -13,13 +13,13 @@ namespace Demo
 {
 
     [TestClass]
-    public class Class1
+    public class CS6
     {
         public int X { get; set; } = 1;  // Auto property Initializer
         public int Y { get;  } = 2;      // Getter-Only Auto Props
         public int Z { get; }
 
-        public Class1()
+        public CS6()
         {
             Z = 3;          // Constructor assignment to getter only;
         }
@@ -76,6 +76,7 @@ namespace Demo
             Trace.WriteLine($"{child.Name} is {child.Age} years old on {child.BirthDate:mm/dd/yyyy}");    // String interpolation.
         }
 
+        [TestMethod]
         public void CanGetNameof(string name)
         {
             var parent = new Person();
