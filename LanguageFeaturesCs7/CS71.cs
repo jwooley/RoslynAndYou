@@ -9,6 +9,7 @@ namespace LanguageFeaturesCs7
 {
     class Program
     {
+        // Async Main
         static async Task Main(string[] args)
         {
             await Task.FromResult(0);

@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace LanguageFeaturesCs7
+{
+    class AddressRecord(String addr1, string City, string State, string Zip)
+    {
+    }
+
+    class RecordTester
+    {
+        public void AreEqual()
+        {
+            var addr1 = new AddressRecord("1", "SD", "CA", "123");
+            var addr2 = new AddressRecord("1", "SD", "CA", "123"); 
+            Assert.IsTrue(
+                addr1 == addr2
+            );
+        }
+    }
+}

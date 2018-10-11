@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace LanguageFeaturesCs7
+{
+    public class CS8Range
+    {
+        public void Test()
+        {
+            var arr = Enumerable.Range(1, 10);
+            var num12 = arr.Range[..2];
+            var num234 = arr.Range[2..4];
+            var num789 = arr.Range[^4..^1];
+        }
+    }
+}

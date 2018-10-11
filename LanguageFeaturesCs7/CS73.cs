@@ -23,7 +23,7 @@ namespace LanguageFeaturesCs7
         {
             var t1 = (x: 1, Y: "two");
             var t2 = (a: 1, b: "two");
-            var t3 = (Y: "two", X: 1);
+            var t3 = (Y: "two", x: 1);
             Assert.AreEqual(t1, t2);
             Assert.AreNotEqual(t1, t3);
         }
