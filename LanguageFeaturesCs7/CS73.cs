@@ -18,6 +18,18 @@ namespace LanguageFeaturesCs7
     [TestClass]
     public class CS73
     {
+        public int ExpressionVariablesInInitializer = int.TryParse("42", out var answer) ? 0 : answer;
+
+        [TestMethod]
+        public void CS73_ExpressionVariablesInLinq()
+        {
+            var vals = Enumerable.Range(1, 10);
+            var evens = vals
+                .Select(v => v.ToString())
+                .Select(v => int.TryParse(v, out var value) ? value : -1)
+                .Where(v => v % 2 == 0);
+        }
+
         [TestMethod]
         public void CS73_TypleEqualityComparisons()
         {
