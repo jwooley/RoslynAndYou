@@ -21,21 +21,22 @@ namespace LanguageFeaturesCs8
 
     public class TestAsyncList : IAsyncEnumerable<Person>, IAsyncEnumerator<Person>
     {
-        public Person Current => throw new NotImplementedException();
+        public Person Current => new Person();
 
         public ValueTask DisposeAsync()
         {
-            throw new NotImplementedException();
+            // Nothing to dispose
+            return new ValueTask();
         }
 
         public IAsyncEnumerator<Person> GetAsyncEnumerator(CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            return this;
         }
 
         public ValueTask<bool> MoveNextAsync()
         {
-            throw new NotImplementedException();
+            return new ValueTask<bool>(false);
         }
     }
 	public class Person
