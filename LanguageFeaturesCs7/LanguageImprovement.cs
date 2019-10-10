@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LanguageFeaturesCs7;
+using System;
 using System.Collections.Generic;
 
 namespace TestProject
@@ -59,6 +60,16 @@ namespace TestProject
                 result = false;
             }
             return result;
+        }
+
+        public void PatternMatch()
+        {
+            object x = new Address("","","", "");
+            var p = x as Person;
+            if (p != null)
+            {
+                Console.WriteLine(p.firstName);
+            }
         }
 
         public void Dispose()
