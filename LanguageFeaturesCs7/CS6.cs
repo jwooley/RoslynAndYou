@@ -57,8 +57,7 @@ namespace Demo
 
             Trace.WriteLine((parent == null) ? 0  : parent.Age);
 
-           var age = parent?.Age;
-
+            var age = parent?.Age;
             Trace.WriteLine(parent?.Age);
             var nullPropigatedAge = parent?.Age;
             Trace.WriteLine(parent?.Children.FirstOrDefault()?.Age);
@@ -71,23 +70,25 @@ namespace Demo
             {
                 Age = 42
             };
-            Trace.WriteLine($"{child.Name} is {child.Age} years old");
+            Trace.WriteLine(string.Format("{1} is {2} years old", child.Name, child.Age));
 
             Trace.WriteLine($"{child.Name} is {child.Age} years old on {child.BirthDate:mm/dd/yyyy}");    // String interpolation.
         }
 
-        [TestMethod]
         public void CanGetNameof(string name)
         {
             var parent = new Person();
+            parent.Name = name;
 
             OnNotifyPropertyChanged("name");           // Without nameof
             OnNotifyPropertyChanged(nameof(name));     // With nameof
 
             Assert.AreEqual("Age", nameof(parent.Age));
 
-
-            throw new ArgumentException("Field not set", nameof(name));
+            if (1 == 2)
+            {
+                throw new ArgumentException("Field not set", nameof(name));
+            }
         }
 
         public string FullName()

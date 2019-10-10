@@ -13,7 +13,7 @@ namespace LanguageFeaturesCs7
         [TestMethod]
         public void CS7Test()
         {
-            object[] numbers = {0b1, 0b10, new object[] { 0b10, 0b100, 0b1000 }, 0b1_0000, 0b1000_00, "123", null }; // Binary literals with digit separators
+            object[] numbers = {0b1, 0b10, new object[] { 122_345.6, 0b10, 0b100, 0b_1000 }, 0b1_00_00, 0b1000_00, "123", null }; // Binary literals with digit separators
             (int sum, int count) Tally(IEnumerable<object> list)        // Local Functions with tuple value types
             {
                 var r = (sum: 0, count: 0);
@@ -31,7 +31,7 @@ namespace LanguageFeaturesCs7
                             r.count += c;
                             break;
                         case string iStr:
-                            if (int.TryParse(iStr, out int parsed))     // out var
+                            if (int.TryParse(iStr, out var parsed))     // out var
                             {
                                 r.sum += parsed;
                                 r.count++;
@@ -72,9 +72,12 @@ namespace LanguageFeaturesCs7
         {
             string s = null;
             if (s == null)
+            {
                 throw new NullReferenceException("s is null");
+            }
 
             var t = s ?? throw new NullReferenceException("s is null");
+            Assert.IsNull(t);
         }
 
         [TestMethod]

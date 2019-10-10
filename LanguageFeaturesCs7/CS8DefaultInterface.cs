@@ -1,10 +1,13 @@
-﻿using System;
-public class Program
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+[TestClass]
+public class DefaultInterfaceTester
 {
-    public static void Main()
+    [TestMethod]
+    public void AddressInterfaceTest()
     {
         IAddress addr = new C("123 Any St", "San Diego", "CA", "11111");
-        Console.WriteLine(addr.Formatted());
+        Assert.AreEqual("123 Any St\r\n\r\nSan Diego, CA 11111", addr.Formatted());
     }
 }
 
