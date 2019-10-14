@@ -6,12 +6,12 @@ public class DefaultInterfaceTester
     [TestMethod]
     public void AddressInterfaceTest()
     {
-        IAddress addr = new C("123 Any St", "San Diego", "CA", "11111");
+        IAddress addr = new Location("123 Any St", "San Diego", "CA", "11111");
         Assert.AreEqual("123 Any St\r\n\r\nSan Diego, CA 11111", addr.Formatted());
     }
 }
 
-public class C : IAddress
+public class Location : IAddress
 {
     public string Address1 { get; set; }
     public string Address2 { get; set; }
@@ -19,7 +19,7 @@ public class C : IAddress
     public string State { get; set; }
     public string Zip { get; set; }
 
-    public C(string addr1, string city, string state, string zip)
+    public Location(string addr1, string city, string state, string zip)
     {
         Address1 = addr1;
         City = city;
