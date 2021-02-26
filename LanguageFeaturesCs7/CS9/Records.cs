@@ -11,18 +11,24 @@ namespace LanguageFeaturesCs7.CS9
         [TestMethod]
         public void RecordEquality()
         {
-            var e1 = new EmployeePoco("Jim", "Wooley", "SA");
+            var e1 = new Employee { FirstName = "Jim", LastName = "Wooley" };
+            var e2 = new Employee { FirstName = "Jim", LastName = "Wooley" };
+            Console.WriteLine($"Classes equal: {e1 == e2}");
+
+            var r1 = new EmployeePoco("Jim", "Wooley", "SA");
             // e1.Title = "Sr Delivery Principal";
-            var e2 = e1 with { Title = "Sr Delivery Principal" };
-            var e3 = new EmployeePoco("Jim", "Wooley", "SA");
+            var r2 = r1 with { Title = "Sr Delivery Principal" };
+            var r3 = new EmployeePoco("Jim", "Wooley", "SA");
 
-            Console.WriteLine($"e1 equals e2: {e1 == e2}");
-            Console.WriteLine($"e1 equals e3: {e1.Equals(e3)}");
-            Console.WriteLine($"e1 == e3: {e1 == e3}");
+            Console.WriteLine($"r1 equals r2: {r1 == r2}");
+            Console.WriteLine($"r1 equals r3: {r1.Equals(r3)}");
+            Console.WriteLine($"r1 == r3: {r1 == r3}");
 
-            var (first, last, title) = e1;
+            var (first, last, title) = r1;
             Console.WriteLine(first);
             Console.WriteLine(last);
+
+            var r4 = r1 with { Title = "Sr Delivery Principal" };
         }
     }
 
